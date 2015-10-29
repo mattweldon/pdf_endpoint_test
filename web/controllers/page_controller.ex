@@ -6,7 +6,7 @@ defmodule PdfEndpointTest.PageController do
   end
 
   def pdf(conn, _params) do
-    {:safe, [_ | html]} = PdfEndpointTest.PageView.render("index.html")
+    {:safe, [_ | html]} = PdfEndpointTest.PageView.render("index.html", layout: {PdfEndpointTest.LayoutView, "app.html"})
     IO.inspect html
     {:ok, tmp_pdf}
       = %HtmlToPdf.Document{}
