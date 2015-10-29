@@ -6,15 +6,7 @@ defmodule PdfEndpointTest.PageController do
   end
 
   def pdf(conn, _params) do
-    {:safe, [_ | html]} = PdfEndpointTest.PageView.render("index.html", layout: {PdfEndpointTest.LayoutView, "app.html"})
-    IO.inspect html
-    {:ok, tmp_pdf}
-      = %HtmlToPdf.Document{}
-        |> HtmlToPdf.set_html(html)
-        |> HtmlToPdf.generate_pdf
-
     conn
-    |> put_resp_header("content-disposition", "attachment; filename='endpoint_test.pdf'")
-    |> send_file(200, tmp_pdf)
+    |> PlugPdf.call(PdfEndpointTest.PageView.render("index.html", layout: {PdfEndpointTest.LayoutView, "app.html"}), "downloaded_pdf.pdf")
   end
 end
