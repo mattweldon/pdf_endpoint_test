@@ -8,6 +8,7 @@ use Mix.Config
 # with brunch.io to recompile .js and .css sources.
 config :pdf_endpoint_test, PdfEndpointTest.Endpoint,
   http: [port: 4000],
+  url: [host: "localhost", port: 4000],
   debug_errors: true,
   code_reloader: true,
   cache_static_lookup: false,

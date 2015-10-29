@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <title>Hello Phoenix!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="http://localhost:4000/css/app.css">
   </head>
 
   <body>
@@ -26,6 +26,5 @@
       <%= @inner %>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

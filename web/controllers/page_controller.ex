@@ -6,7 +6,8 @@ defmodule PdfEndpointTest.PageController do
   end
 
   def pdf(conn, _params) do
+    rendered_string = Phoenix.View.render_to_string(PdfEndpointTest.PageView, "index.html", conn: conn, layout: {PdfEndpointTest.LayoutView, "app.html"})
     conn
-    |> PlugPdf.call(PdfEndpointTest.PageView.render("index.html", layout: {PdfEndpointTest.LayoutView, "app.html"}), "downloaded_pdf.pdf")
+    |> PlugPdf.call(rendered_string, "downloaded_pdf.pdf")
   end
 end

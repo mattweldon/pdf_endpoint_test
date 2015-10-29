@@ -1,7 +1,7 @@
 defmodule PlugPdf do
-  def call(conn, view, download_filename) do
-    {:safe, [_ | html]} = view
-
+  # import Plug.Conn
+  def call(conn, html, download_filename) do
+    IO.inspect html
     {:ok, tmp_pdf}
       = %HtmlToPdf.Document{}
         |> HtmlToPdf.set_html(html)
